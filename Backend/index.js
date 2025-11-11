@@ -287,3 +287,12 @@ app.get("/historial/:idModulo", autenticar, (req, res) => {
     res.json(result[0]);
   });
 });
+/*------------------------------------------Ruta Raíz------------------------------------------*/
+app.get("/", (req, res) => {
+  res.send("🚀 Backend de ElektraSpace funcionando correctamente");
+});
+
+/*------------------------------------------Activar DB------------------------------------------*/
+app.listen(process.env.PORT || 3001, () => {
+  console.log("Server is running on port " + (process.env.PORT || 3001));
+});
