@@ -1,0 +1,105 @@
+.background-panelAdmin {
+  background-color: rgb(0, 0, 0, 0.7);
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.tittle-Admin {
+  top: 4%;
+  position: absolute;
+  color: white;
+  font-size: 2rem;
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+}
+.username-Admin {
+  font-size: 16px;
+  color: white;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+.username-Admin:hover {
+  transform: scale(1.12);
+}
+
+.total {
+  border-radius: 15px;
+  width: 70%;
+  height: 75%;
+  position: absolute;
+  margin-top: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.total-statistic {
+  position: absolute;
+  top: 0%;
+  width: 100%;
+  height: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1%;
+}
+.total-users h1,
+.total-simulations h1,
+.total-quizzes h1,
+.total-modules h1 {
+  position: absolute;
+  font-size: 48px;
+  top: 20%;
+}
+.total-users p,
+.total-simulations p,
+.total-quizzes p,
+.total-modules p {
+  position: relative;
+  top: 5%;
+  font-size: 16px;
+}
+
+.total-quizzes,
+.total-simulations,
+.total-users {
+  border: 2px solid white;
+  border-radius: 15px;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  font-weight: 900;
+  font-size: 24px;
+  justify-content: space-around;
+}
+
+.total-users {
+  background-color: rgb(39, 160, 84);
+}
+.total-simulations {
+  background-color: rgb(84, 39, 160);
+}
+.total-quizzes {
+  background-color: rgb(39, 39, 160);
+}
+
+.total-modules {
+  font-size: 26px;
+  background-color: rgb(160, 39, 51);
+  font-weight: 900;
+  justify-content: space-around;
+  border-radius: 15px;
+  width: 100%;
+  height: 44%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  bottom: 2%;
+  border: 2px solid white;
+}

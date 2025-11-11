@@ -1,0 +1,357 @@
+.background-dashboard {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  min-height: 210%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+/*---------------------Cerrar Sesión---------------------------*/
+.close-sesion {
+  position: absolute;
+  top: 2%;
+  left: 88%;
+  font-size: 16px;
+  border-radius: 8px;
+  padding: 7px;
+  padding-right: 20px;
+  color: white;
+  font-weight: bolder;
+  background-color: red;
+}
+.close-sesion:hover {
+  color: white;
+  transform: scale(1.09);
+}
+/*---------------------Perfil---------------------------*/
+.contain-user {
+  position: fixed;
+  top: 90%;
+  left: 0.2%;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 14px 0px 0px;
+  z-index: 10;
+}
+.contain-user:hover {
+  border-radius: 15px;
+  background-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45), 0 0 10px rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+}
+.contain-user:hover .profile {
+  border-color: white;
+  background-color: slategray;
+  transform: scale(1.01);
+}
+.contain-user:hover .username {
+  transform: scale(1.15);
+}
+.username {
+  font-size: 18.5px;
+  color: white;
+  font-weight: bold;
+  transition: transform 0.3s ease;
+}
+.profile {
+  font-size: 20px;
+  border-radius: 50%;
+  padding: 10px;
+  background-color: white;
+  border: 3px solid slategray;
+}
+/*---------------------Título---------------------------*/
+.tittle-dashboard {
+  font-size: 48px;
+  position: absolute;
+  color: white;
+  text-shadow: 0 0 2px white, 0 0 16px cyan, 0 0 24px whitesmoke;
+  top: 2%;
+  left: 36%;
+  margin: 0;
+}
+/*---------------------Subtítulo---------------------------*/
+.subtittle-dashboard {
+  color: white;
+  position: absolute;
+  text-align: center;
+  font-size: 15px;
+  top: 8%;
+  left: 30%;
+  margin: 0;
+}
+/*---------------------Sol---------------------------*/
+.sun,
+.planet {
+  z-index: 5;
+  pointer-events: auto;
+}
+
+.sun {
+  position: absolute;
+  font-size: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(
+    rgb(246, 120, 17),
+    rgb(255, 213, 0),
+    rgba(171, 10, 10, 0.901)
+  );
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  box-shadow: 0 0 600px 200px rgba(255, 200, 0, 0.6);
+  animation: pulse 1s infinite;
+}
+
+.sun:hover {
+  transform: scale(1.15);
+}
+.sun::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, orange, transparent 80%);
+  animation: solarPulse 2s ease-out infinite;
+  z-index: -1;
+}
+
+@keyframes solarPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/*---------------------Órbitas---------------------------*/
+.system-solar {
+  font-size: 14px;
+  text-align: center;
+  color: #fff;
+  font-family: "Orbitron", sans-serif;
+  z-index: -0;
+  pointer-events: none;
+}
+.system-solar.ring0 {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 40%;
+  left: 33%;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  animation: giratory 15s linear infinite;
+}
+
+.system-solar.ring1 {
+  position: absolute;
+  display: flex;
+  align-items: flex-start;
+  top: 40%;
+  left: 33%;
+  width: 400px;
+  height: 400px;
+  border: 2px dashed gray;
+  border-radius: 50%;
+  animation: giratory 30s linear infinite;
+}
+.system-solar.ring2 {
+  position: absolute;
+  display: flex;
+  align-items: flex-start;
+  top: 33%;
+  left: 27%;
+  width: 550px;
+  height: 550px;
+  border: 2px dashed gray;
+  border-radius: 50%;
+  animation: giratory 60s linear infinite;
+}
+.system-solar.ring3 {
+  position: absolute;
+  display: flex;
+  align-items: flex-start;
+  top: 27%;
+  left: 23%;
+  width: 700px;
+  height: 700px;
+  border: 2px dashed gray;
+  border-radius: 50%;
+  animation: giratory 90s linear infinite;
+}
+.system-solar.ring4 {
+  position: absolute;
+  display: flex;
+  align-items: flex-start;
+  top: 21%;
+  left: 18%;
+  width: 850px;
+  height: 850px;
+  border: 2px dashed gray;
+  border-radius: 50%;
+  animation: giratory 120s linear infinite;
+}
+.system-solar.ring5 {
+  position: absolute;
+  display: flex;
+  align-items: flex-start;
+  top: 15%;
+  left: 13%;
+  width: 1000px;
+  height: 1000px;
+  border: 2px dashed gray;
+  border-radius: 50%;
+  animation: giratory 150s linear infinite;
+}
+
+@keyframes giratory {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
+}
+/*------------------------------------------Logos---------------------------------------*/
+.spaceship {
+  position: absolute;
+  font-size: 2rem;
+  animation: fly 30s linear infinite;
+  z-index: 10;
+}
+.alien {
+  position: absolute;
+  font-size: 1rem;
+  animation: fly-alien 30s linear infinite;
+  z-index: 10;
+}
+.meteor {
+  position: absolute;
+  font-size: 4rem;
+  animation: fly-meteor 15s linear infinite;
+  z-index: 10;
+}
+.moon {
+  position: absolute;
+  font-size: 3rem;
+  animation: fly-alien 20s linear infinite;
+  z-index: 10;
+}
+.sonda {
+  position: absolute;
+  font-size: 5rem;
+  animation: fly-alien 40s linear infinite;
+  z-index: 10;
+}
+
+@keyframes fly-meteor {
+  0% {
+    transform: translateX(-90vh) translateY(90vh) rotate(0deg);
+  }
+  25% {
+    transform: translateX(90vh) translateY(-90vh) rotate(360deg);
+  }
+  50% {
+    transform: translateX(-90vh) translateY(90vh) rotate(360deg);
+  }
+  75% {
+    transform: translateX(90vh) translateY(-90vh) rotate(0deg);
+  }
+  100% {
+    transform: translateX(90vh) translateY(90vh) rotate(0deg);
+  }
+}
+@keyframes fly-alien {
+  0% {
+    transform: translateX(100px) translateY(100px) rotate(0deg);
+  }
+  25% {
+    transform: translateX(500px) translateY(800px) rotate(0deg);
+  }
+  50% {
+    transform: translateX(0px) translateY(0px) rotate(0deg);
+  }
+  75% {
+    transform: translateX(-500px) translateY(300px) rotate(0deg);
+  }
+  100% {
+    transform: translateX(100px) translateY(100px) rotate(0deg);
+  }
+}
+
+@keyframes fly {
+  0% {
+    transform: translateX(-50vw) translateY(-50vh) rotate(0deg);
+  }
+  25% {
+    transform: translateX(50vw) translateY(50vh) rotate(90deg);
+  }
+  50% {
+    transform: translateX(0vw) translateY(50vh) rotate(180deg);
+  }
+  75% {
+    transform: translateX(-50vw) translateY(50vh) rotate(270deg);
+  }
+  100% {
+    transform: translateX(-50vw) translateY(-50vh) rotate(360deg);
+  }
+}
+/*------------------------------------------Panel Guía---------------------------------------*/
+.guide-panel {
+  position: fixed;
+  bottom: 24px;
+  left: 900px;
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  border-radius: 12px;
+  width: 420px;
+  max-height: 200px;
+  font-family: sans-serif;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 2px solid white;
+}
+.guide-panel h4 {
+  text-align: center;
+  padding: 0%;
+}
+/*------------------------------------------Nave---------------------------------------*/
+.nave {
+  position: absolute;
+  top: 6%;
+  left: 70%;
+  animation: naveFly 30s ease-in-out infinite;
+  z-index: 10;
+  cursor: pointer;
+}
+
+@keyframes naveFly {
+  0% {
+    transform: translateX(450px);
+  }
+  25% {
+    transform: translateY(-20px);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  75% {
+    transform: translateX(-50px);
+  }
+  100% {
+    transform: translateX(450px);
+  }
+}

@@ -1,0 +1,187 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap");
+:root {
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+body,
+html {
+  overflow-x: hidden;
+  overflow-y: overlay;
+}
+
+body {
+  position: relative;
+  margin: 0;
+  display: flex;
+  font-family: Inter, sans-serif;
+  width: 100vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  z-index: -100;
+
+  background: radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+    radial-gradient(2px 2px at 40px 70px, #fff, transparent),
+    radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+    radial-gradient(
+      1px 1px at 130px 80px,
+      rgba(255, 255, 255, 0.6),
+      transparent
+    ),
+    radial-gradient(2px 2px at 160px 30px, #fff, transparent),
+    radial-gradient(5px 5px at 100px 100px, #fff, transparent),
+    radial-gradient(ellipse at center, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+
+  background-size: 200px 200px, 200px 200px, 200px 200px, 200px 200px,
+    200px 200px, 200px 200px, cover;
+}
+
+a {
+  text-decoration: inherit;
+}
+
+/*----------------------------------------Modo claro------------------------------------------*/
+body.light-mode {
+  background: radial-gradient(2px 2px at 20px 30px, #fff, transparent),
+    radial-gradient(2px 2px at 40px 70px, #fff, transparent),
+    radial-gradient(1px 1px at 90px 40px, #fff, transparent),
+    radial-gradient(
+      1px 1px at 130px 80px,
+      rgba(255, 255, 255, 0.6),
+      transparent
+    ),
+    radial-gradient(2px 2px at 160px 30px, #fff, transparent),
+    radial-gradient(5px 5px at 100px 100px, #fff, transparent),
+    radial-gradient(ellipse at center, #f6f6f3 0%, #70d8fe 50%, #7041f1 100%);
+  background-size: 200px 200px, 200px 200px, 200px 200px, 200px 200px,
+    200px 200px, 200px 200px, cover;
+}
+
+body.light-mode .sun {
+  background: radial-gradient(
+    rgb(176, 228, 235),
+    rgb(36, 151, 218),
+    rgb(10, 80, 80)
+  );
+  box-shadow: 0 0 80px 40px rgba(120, 160, 255, 0.5);
+}
+body.light-mode .system-solar {
+  border-color: #0f0f23;
+}
+body.light-mode .tittle-dashboard,
+body.light-mode .subtittle-dashboard,
+body.light-mode .subtittle-s1,
+body.light-mode .subtittle-s2,
+body.light-mode .subtittle-s3 {
+  color: #0f0f23;
+}
+body.light-mode .guide-panel {
+  background-color: #fff;
+  color: #0f0f23;
+  border-color: #0f0f23;
+}
+body.light-mode .navBar {
+  background-color: #fff;
+  color: #0f0f23;
+  border-color: #0f0f23;
+}
+body.light-mode .navBar button:hover {
+  background-color: #0f0f23;
+  color: #fff;
+}
+body.light-mode .navBar button {
+  color: #0f0f23;
+}
+body.light-mode .contain-user {
+  font-weight: 700;
+}
+body.light-mode .contain-user .username {
+  color: #010101;
+}
+
+body.light-mode .contain-user:hover {
+  background-color: #0f0f23;
+  color: #f6f6f3;
+}
+body.light-mode .contain-user:hover .profile {
+  background-color: #f6f6f3;
+  border-color: #0f0f23;
+  color: #0f0f23;
+}
+body.light-mode .contain-user:hover span {
+  color: #fff;
+}
+body.light-mode .contain-user .profile {
+  background-color: #0f0f23;
+  border-color: #fff;
+  color: #f6f6f3;
+}
+body.light-mode .close-sesion {
+  background-color: #0f0f23;
+}
+
+body.light-mode::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -10;
+
+  background: radial-gradient(circle, #ff0b07, #010101),
+    radial-gradient(circle, #ff0b07, #010101),
+    radial-gradient(circle, #ff0b07, #010101),
+    radial-gradient(circle, #ff0b07, #010101),
+    radial-gradient(circle, #ff0b07, #010101),
+    radial-gradient(circle, #ff0b07, #010101),
+    radial-gradient(circle, #ff0b07, #010101),
+    radial-gradient(circle, #ff0b07, #010101),
+    radial-gradient(circle, #ff0b07, #010101),
+    radial-gradient(circle, #ff0b07, #010101),
+    radial-gradient(circle, #ff0b07, #010101),
+    radial-gradient(circle, #ff0b07, #010101),
+    radial-gradient(circle, #ff0b07, #010101),
+    radial-gradient(circle, #ff0b07, #010101),
+    radial-gradient(circle, #ff0b07, #010101),
+    radial-gradient(circle, #ff0b07, #010101),
+    radial-gradient(circle, #ff0b07, #010101),
+    radial-gradient(circle, #ff0b07, #010101),
+    radial-gradient(circle, #ff0b07, #010101),
+    radial-gradient(circle, #ff0b07, #010101),
+    radial-gradient(circle, #ff0b07, #010101);
+
+  background-size: 6px 6px, 6px 6px, 6px 6px, 6px 6px, 6px 6px, 6px 6px, 6px 6px,
+    6px 6px, 6px 6px, 6px 6px, 6px 6px, 6px 6px, 6px 6px, 6px 6px, 6px 6px,
+    6px 6px, 6px 6px, 6px 6px, 6px 6px, 6px 6px, 6px 6px;
+
+  background-position: 10% 20%, 30% 80%, 50% 40%, 70% 60%, 85% 30%, 40% 10%,
+    15% 40%, 20% 70%, 30% 60%, 10% 80%, 5% 50%, 90% 90%, 5% 5%, 95% 10%, 80% 85%,
+    60% 95%, 75% 15%, 25% 85%, 55% 75%, 95% 55%, 5% 95%;
+
+  background-repeat: no-repeat;
+  animation: quantumFloat 8s infinite ease-in-out;
+}
+
+@keyframes quantumFloat {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0.4;
+  }
+  25% {
+    transform: translateY(-30px) translateX(20px) scale(1.5);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-10px) translateX(-15px) scale(0.8);
+    opacity: 0.7;
+  }
+  75% {
+    transform: translateY(-40px) translateX(10px) scale(1.2);
+    opacity: 0.9;
+  }
+}

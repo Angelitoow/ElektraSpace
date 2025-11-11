@@ -1,0 +1,51 @@
+.theme-container {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 12;
+}
+.theme-card {
+  position: fixed;
+  z-index: 12;
+  background: rgba(28, 27, 27, 0.9);
+  border-radius: 20px;
+  border: 2px solid gray;
+  padding: 2rem 3rem;
+  color: white;
+  text-align: center;
+  max-width: 550px;
+  font-family: Inter;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.theme-card h1 {
+  font-family: orbitron;
+  text-shadow: 0 0 20px rgb(23, 123, 237);
+  font-size: 20px;
+  margin-bottom: 10%;
+}
+.themes-toggle{
+  width: 50%;
+  text-align: left;
+  border: solid black;
+  border-radius: 10px;
+  padding: 5px;
+  background:rgba(235, 235, 235, 0.2);
+  flex-direction: row;
+  display: flex;
+  gap: 15px;
+}
+.light{
+  font-size: 22px;
+  position: absolute;
+  right: 32%;
+}
+.dark{
+  font-size: 22px;
+}

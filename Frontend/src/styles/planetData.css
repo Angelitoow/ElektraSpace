@@ -1,0 +1,140 @@
+.planetData-container {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 12;
+}
+.planetData-card {
+  position: fixed;
+  z-index: 12;
+  background: rgba(28, 27, 27, 0.9);
+  border-radius: 15px;
+  border: 1px solid gray;
+  padding: 2rem 2rem;
+  color: white;
+  text-align: center;
+  max-width: 770px;
+  max-height: 470px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.planetData-card h1 {
+  font-family: "Orbitron";
+  text-shadow: 0 0 20px rgb(237, 23, 23);
+  font-size: 38px;
+}
+.planetData-card p {
+  margin-top: 0%;
+  font-size: 18px;
+  margin-bottom: 5%;
+  color: white;
+}
+.description-container {
+  border: 2px solid white;
+  border-radius: 15px;
+  background: rgb(214, 75, 75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.description-container h1 {
+  font-family: "Inter";
+  font-size: 24px;
+}
+.description {
+  background: rgb(133, 10, 10);
+  width: 85%;
+  border-radius: 15px;
+  padding: 20px;
+  text-align: left;
+  font-size: 18px;
+   border: 2px solid;
+}
+.description-mision {
+  border: 2px solid;
+  font-size: 12px;
+  margin-top: 3%;
+  width: 85%;
+  padding: 20px;
+  background: rgb(133, 10, 10);
+  border-radius: 15px;
+  margin-bottom: 5%;
+  text-align: left;
+}
+
+.description-piece {
+  align-self: center;
+  justify-self: center;
+  background: rgb(54, 0, 0);
+  width: 85%;
+  border-radius: 15px;
+}
+.description-piece p {
+  font-size: 15px;
+  padding: 15px;
+}
+.progress-container {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2%;
+  align-items: center;
+  justify-content: center;
+}
+.progress,
+.inventary {
+  border: 2px solid;
+  background: rgba(6, 5, 5, 0.8);
+  border-radius: 15px;
+  padding: 15px;
+  height: 100%;
+}
+.progress p {
+  font-size: 18px;
+  margin: 0%;
+}
+
+.inventary p {
+  font-size: 18px;
+  margin: 0%;
+}
+.button-container {
+  margin-top: 3%;
+  margin-bottom: 2%;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  gap: 5%;
+}
+.button-container button {
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 15px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.button-container button:hover {
+  transform: scale(1.15);
+}
+#init {
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  color: white;
+  border: 2px solid;
+  background-color: red;
+}
+#init:hover {
+  transform: scale(1.15);
+}
+#back {
+  background-color: black;
+}

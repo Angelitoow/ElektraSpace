@@ -1,0 +1,153 @@
+.quiz-container {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 12;
+}
+.quiz-container .message {
+  position: fixed;
+  font-family: "Inter";
+  padding: 35px;
+  border-radius: 8px;
+  background-color: black;
+  border: 4px solid deepskyblue;
+  color: deepskyblue;
+  box-shadow: 0 4px 12px rgba(0, 0, 0);
+  font-size: 18px;
+  text-align: center;
+  font-size: 24px;
+  animation: pulse-message 2s ease-in-out infinite;
+}
+.quiz-container .message button{
+    margin-top: 25px;
+    padding: 10px 20px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    background-color: rgb(144, 224, 251);
+    color: black;
+    cursor: pointer;
+}
+.quiz-container .message button:hover{
+    background-color: deepskyblue;
+    color: white;
+    transform: scale(1.1);
+}
+@keyframes pulse-message {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+.quiz-container .message span {
+  font-size: 36px;
+}
+.quiz-card {
+  position: fixed;
+  z-index: 12;
+  background: rgba(28, 27, 27, 0.9);
+  border-radius: 15px;
+  border: 1px solid gray;
+  padding: 2rem 2rem;
+  color: white;
+  text-align: center;
+  width: 800px;
+  max-height: 470px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.quiz-card h1 {
+  font-family: "Orbitron";
+  text-shadow: 0 0 20px rgb(23, 237, 219);
+  font-size: 38px;
+}
+
+.quiz-card h3 {
+  font-size: 18px;
+}
+.quiz-card p {
+  margin-top: 0%;
+  font-size: 16px;
+  color: white;
+}
+.description-quiz {
+  border-radius: 10px;
+  background: rgb(17, 37, 66);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 5px;
+}
+.questions-quiz {
+  margin-top: 3%;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Tarjeta de pregunta */
+.question-card {
+  background-color: #4b76e2;
+  color: white;
+  border-radius: 12px solid red;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  border-radius: 15px;
+}
+
+/* Título de la pregunta */
+.question-card h2 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* Cuadro con las opciones */
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+/* Botones de opción */
+.option-btn {
+  background-color: #374151;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 20px;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 15px;
+  margin-bottom: 2%;
+}
+
+.option-btn:hover {
+  background-color: #a5adb9;
+  transform: scale(1.05);
+}
+.recolect-piece {
+  background-color: #50b425;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 12px;
+  text-align: left;
+  cursor: pointer;
+  font-size: 15px;
+  margin-top: 3%;
+  font-size: 20px;
+  margin-bottom: 2%;
+}
+.recolect-piece:hover {
+  background-color: #34a02c;
+  transform: scale(1.15);
+}

@@ -1,0 +1,34 @@
+.navBarAdmin {
+  position: absolute;
+  margin-right: 5%;
+  left: 0%;
+  bottom: 0%;
+  background-color: rgb(9, 9, 9);
+  border: 2px solid white;
+  height: 99%;
+}
+.navBarAdmin button {
+  width: 100%;
+  background: none;
+  border: none;
+  font-size: 18px;
+  padding: 15px;
+  border-radius: 15px;
+}
+.navBarAdmin button:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45), 0 0 10px rgba(255, 255, 255, 0.06);
+  transform: scale(1.02);
+}
+.management {
+  color: white;
+  font-size: 24px;
+  font-weight: 900;
+  text-align: start;
+  margin: 20px 0;
+  border-bottom: 2px solid white;
+  width: 80%;
+  justify-self: center;
+  padding-bottom: 10px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}

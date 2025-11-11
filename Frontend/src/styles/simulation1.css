@@ -1,0 +1,466 @@
+.background-simulation1 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  align-items: center;
+  justify-content: flex-start;
+  background: radial-gradient(
+      circle at 15% 25%,
+      rgba(255, 105, 180, 0.15) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      circle at 85% 75%,
+      rgba(64, 224, 208, 0.12) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      circle at 45% 85%,
+      rgba(138, 43, 226, 0.1) 0%,
+      transparent 600%
+    ),
+    radial-gradient(
+      circle at 75% 15%,
+      rgba(255, 215, 0, 0.08) 0%,
+      transparent 40%
+    );
+}
+.header-s1 {
+  font-size: 14px;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 10;
+}
+.tittle-s1 {
+  font-family: Orbitron, monospace;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(45deg, #ff6b9d, #c44569, #f8b500);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 2.5rem;
+  font-weight: 900;
+  text-shadow: 0 0 30px rgba(255, 107, 157, 0.5);
+  margin-bottom: 5px;
+  filter: drop-shadow(0 0 10px rgba(255, 107, 157, 0.3));
+}
+.subtittle-s1 {
+  font-family: Orbitron, monospace;
+  font-style: italic;
+  color: #40e0d0;
+  font-size: 0.86rem;
+  font-weight: 400;
+  text-shadow: 0 0 10px rgba(64, 224, 208, 0.5);
+}
+.simulation1-contener {
+  width: 100vw;
+  height: 100vh;
+}
+/*------------------------------------------Cañon---------------------------------------------- */
+.cannon-container {
+  position: absolute;
+  left: 60px;
+  bottom: 120px;
+  z-index: 50;
+  transform-origin: bottom center;
+}
+
+.cannon-base {
+  width: 80px;
+  height: 40px;
+  background: linear-gradient(45deg, #2c3e50, #34495e, #2c3e50);
+  border-radius: 40px 40px 20px 20px;
+  border: 3px solid #f39c12;
+  position: relative;
+  box-shadow: 0 0 20px rgba(243, 156, 18, 0.4),
+    inset 0 -10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.cannon-body {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 80px;
+  background: linear-gradient(180deg, #e74c3c, #c0392b, #e74c3c);
+  border-radius: 25px;
+  border: 3px solid #f39c12;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 25px rgba(231, 76, 60, 0.4),
+    inset 0 10px 20px rgba(255, 255, 255, 0.2),
+    inset 0 -10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.cannon-body:hover {
+  transform: translateX(-50%) scale(1.05);
+  box-shadow: 0 0 35px rgba(231, 76, 60, 0.6),
+    inset 0 10px 20px rgba(255, 255, 255, 0.3);
+}
+
+.cannon-mouth {
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 35px;
+  height: 15px;
+  background: linear-gradient(90deg, #2c3e50, #34495e);
+  border-radius: 20px;
+  border: 2px solid #f39c12;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.cannon-details {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 30px;
+  background: radial-gradient(circle, #f39c12, #e67e22);
+  border-radius: 50%;
+  border: 2px solid #d35400;
+  box-shadow: 0 0 15px rgba(243, 156, 18, 0.6),
+    inset 0 5px 10px rgba(255, 255, 255, 0.3);
+}
+/*------------------------------------------Átomos---------------------------------------------- */
+.atom {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.atom:hover {
+  transform: scale(1.15);
+}
+/*------------------------------------------Anillos---------------------------------------------- */
+.ring {
+  width: 100px;
+  height: 100px;
+  border: 2px solid rgba(255, 107, 107, 0.6);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) rotate(0deg);
+  box-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+}
+/*------------------------------------------Núcleo atómico---------------------------------------------- */
+.planet-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #4facfe, #00f2fe, #1e3c72);
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 30px rgba(79, 172, 254, 0.6),
+    inset 0 0 20px rgba(255, 255, 255, 0.2);
+  animation: planet-rotate 4s linear infinite;
+}
+@keyframes planet-rotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+/*------------------------------------------Superficie atómica---------------------------------------------- */
+.planet-surface {
+  position: absolute;
+  top: 5px;
+  left: 8px;
+  width: 15px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  filter: blur(1px);
+}
+.planet-surface:nth-child(2) {
+  top: 25px;
+  left: 20px;
+  width: 10px;
+  height: 6px;
+}
+.planet-surface:nth-child(3) {
+  top: 35px;
+  left: 10px;
+  width: 12px;
+  height: 7px;
+}
+/*------------------------------------------Orbitas---------------------------------------------- */
+.satellite {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ff6b9d, #c44569);
+  box-shadow: 0 0 15px rgba(255, 107, 157, 0.8);
+}
+
+.satellite-1 {
+  top: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.satellite-2 {
+  top: 50%;
+  right: -6px;
+  transform: translateY(-50%);
+  background: radial-gradient(circle, #40e0d0, #20b2aa);
+  box-shadow: 0 0 15px rgba(64, 224, 208, 0.8);
+}
+
+.satellite-3 {
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, #40e0d0, #20b2aa);
+  box-shadow: 0 0 15px rgba(64, 224, 208, 0.8);
+}
+.satellite-4 {
+  bottom: 50%;
+  left: -6px;
+  transform: translateY(-50%);
+}
+/*------------------------------------------Atómico caótico---------------------------------------------- */
+.atom.caotico .planet-core {
+  background: radial-gradient(circle at 30% 30%, #ff6b6b, #ff4757, #c44569);
+  box-shadow: 0 0 30px rgba(255, 107, 107, 0.8),
+    inset 0 0 20px rgba(255, 255, 255, 0.1);
+  animation: planet-chaos 1.5s ease-in-out infinite;
+}
+@keyframes planet-chaos {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  }
+  25% {
+    transform: translate(-50%, -50%) scale(1.1) rotate(90deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(0.9) rotate(180deg);
+  }
+  75% {
+    transform: translate(-50%, -50%) scale(1.1) rotate(270deg);
+  }
+}
+
+.atom.caotico .orbit-ring {
+  border-color: rgba(255, 107, 107, 0.6);
+  box-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+  animation-duration: 1s;
+}
+
+.atom.caotico .satellite {
+  background: radial-gradient(circle, #ff4757, #c44569);
+  box-shadow: 0 0 15px rgba(255, 71, 87, 0.8);
+}
+
+.orbit-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 2px solid rgba(255, 107, 157, 0.4);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 15px rgba(255, 107, 157, 0.3);
+}
+
+.orbit-1 {
+  width: 80px;
+  height: 80px;
+  animation: orbit-spin 3s linear infinite;
+}
+
+.orbit-2 {
+  width: 100px;
+  height: 100px;
+  animation: orbit-spin 4.5s linear infinite reverse;
+  border-color: rgba(64, 224, 208, 0.4);
+  box-shadow: 0 0 15px rgba(64, 224, 208, 0.3);
+}
+
+.orbit-3 {
+  width: 120px;
+  height: 120px;
+  animation: orbit-spin 6s linear infinite;
+  border-color: rgba(255, 215, 0, 0.4);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+}
+.orbit-4 {
+  width: 140px;
+  height: 140px;
+  animation: orbit-spin 8s linear infinite;
+  border-color: rgba(255, 215, 0, 0.4);
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+}
+
+@keyframes orbit-spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+/*------------------------------------------Átomo estable---------------------------------------------- */
+.atom.stabilized .planet-core {
+  background: radial-gradient(circle at 30% 30%, #00ff88, #00d4aa, #20b2aa);
+  box-shadow: 0 0 35px rgba(0, 255, 136, 0.8),
+    inset 0 0 25px rgba(255, 255, 255, 0.3);
+}
+
+.atom.stabilized .orbit-ring {
+  border-color: rgba(0, 255, 136, 0.7);
+  box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+}
+/*------------------------------------------Panel menú---------------------------------------------- */
+.menu {
+  font-family: "Orbitron", monospace;
+  font-size: 14px;
+  font-weight: bold;
+  position: absolute;
+  top: 150px;
+  right: 3%;
+  width: 220px;
+  padding: 20px;
+  bottom: 2%;
+  background: #1a1a2e;
+  border: 3px solid;
+  border-radius: 35px;
+  box-shadow: 0 0 30px rgba(0, 255, 136, 0.6);
+  color: white;
+}
+.menu h2 {
+  font-size: 18px;
+  text-align: center;
+  margin-bottom: 10px;
+  color: white;
+  text-shadow: 0 0 12px tomato;
+}
+.count-stabilized {
+  padding: 10px;
+  border: 2px solid;
+  margin-bottom: 8px;
+  color: #00ff88;
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.7);
+}
+.count-caos {
+  padding: 10px;
+  border: 2px solid;
+  margin-bottom: 8px;
+  color: #ff6b6b;
+  text-shadow: 0 0 10px rgba(214, 200, 200, 0.7);
+}
+.menu-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+.menu button {
+  background: #ff4757;
+  border: solid;
+  border-width: 2px;
+  padding: 15px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+   font-size: medium;
+}
+.menu-buttons button:hover {
+  background-color: white;
+  color: #000;
+  transform: scale(1.08);
+}
+.next {
+  background: #ff4757;
+  border: solid;
+  border-width: 2px;
+  padding: 15px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+}
+.next:hover {
+  background-color: white;
+  color: #000;
+  transform: scale(1.08);
+}
+
+/*------------------------------------------Proyectil---------------------------------------------- */
+.projectil {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(circle, #40e0d0, #20b2aa);
+  border-radius: 50%;
+  pointer-events: none;
+  box-shadow: 0 0 10px #20b2aa;
+  transform: translate(-50%, -50%);
+}
+/*------------------------------------------Trazo de trauectoria---------------------------------------------- */
+.trajectory-dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.7);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+/*------------------------------------------Barra recargable---------------------------------------------- */
+.bar {
+  position: absolute;
+  top: 500px;
+  left: 55px;
+  width: 100px;
+  height: 10px;
+  border: 1px solid #fff;
+}
+.reload {
+  height: 100%;
+  background: radial-gradient(circle, #40e0d0, #20b2aa);
+}
+.explosion {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  background: radial-gradient(circle, yellow, #00f2fe, transparent);
+  border-radius: 50%;
+  transform: scale(0);
+  animation: explode 0.6s ease-out;
+  pointer-events: none;
+  z-index: 999;
+}
+
+@keyframes explode {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.8);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}

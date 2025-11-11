@@ -1,0 +1,67 @@
+/*-------------------------------------------------Estilo para Registro---------------------------------------*/
+#register-box {
+  height: 515px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: radial-gradient(circle at top, #1a1a2e, #000); /* opcional */
+  padding: 1.5rem;
+  border: 4px solid;
+  border-radius: 2rem;
+}
+
+select {
+  padding: 8px;
+  margin: 8px;
+  margin-left: 0;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+  width: 100%;
+}
+select option {
+  background-color: #444;
+  color: white;
+}
+.input-register {
+  margin-left: 0;
+  padding: 8px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  width: 95%;
+}
+
+.button-register {
+  display: inline-block;
+  padding: 10px 20px;
+  background: linear-gradient(to right, #3b82f6, cyan);
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.button-register:hover {
+  background-color: #7f39fb;
+}
+.title-register {
+  font-family: Orbitron, monospace;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-shadow: 0 0 8px cyan, 0 0 16px blue, 0 0 24px violet;
+}
+
+.button-register:hover {
+  color: white;
+  transform: scale(1.05);
+}

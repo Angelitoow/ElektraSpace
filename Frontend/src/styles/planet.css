@@ -1,0 +1,174 @@
+.planet {
+  border-radius: 50%;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+  color: white;
+  font-weight: bolder;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.planet:hover {
+  transform: scale(1.15);
+}
+
+.planet p {
+  position: absolute;
+  font-size: 14px;
+  margin: 0%;
+  top: 110%;
+  opacity: 1;
+}
+
+.planet .name-planet {
+  top: 45%;
+  font-size: 14px;
+}
+/*--------------------------------------FechaAcceso -------------------------*/
+.last-access {
+  position: absolute;
+  top: -50%;
+  font-size: 14px;
+  color: #dddddd;
+  width: 200%;
+}
+/*--------------------------------------Estados -------------------------*/
+.unlocked {
+  color: white;
+  font-weight: bolder;
+  background-color: goldenrod;
+  padding: 5px;
+  padding-right: 10px;
+  border-radius: 15px;
+}
+
+.completed {
+  color: white;
+  font-weight: bold;
+  background-color: #0b8442;
+  padding: 5px;
+  padding-right: 10px;
+  border-radius: 15px;
+}
+
+.blocked {
+  color: white;
+  font-weight: bold;
+  background-color: red;
+  padding: 5px;
+  padding-right: 10px;
+  border-radius: 15px;
+}
+
+/*--------------------------------Planetas-----------------------------*/
+.mundo1 {
+  position: absolute;
+  top: 25px;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle at 30% 30%, #ff6b6b, #ff4500 80%);
+  box-shadow: inset -20px -20px 40px rgba(0, 0, 0, 0.6),
+    0 0 30px rgba(255, 120, 0, 0.4);
+}
+.mundo2 {
+  position: absolute;
+  top: 65px;
+  width: 110px;
+  height: 110px;
+  background: radial-gradient(circle at 30% 30%, #a9f360, #0b8442 80%);
+  box-shadow: inset -20px -20px 40px rgba(0, 0, 0, 0.6),
+    0 0 30px rgba(22, 197, 144, 0.4);
+}
+
+.mundo3 {
+  position: absolute;
+  top: 230px;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle at 30% 30%, #6ef7ff, #004a7c 80%);
+  box-shadow: inset -20px -20px 40px rgba(0, 0, 0, 0.6),
+    0 0 30px rgba(110, 247, 255, 0.4);
+}
+
+.mundo4 {
+  position: absolute;
+  top: 130px;
+  width: 130px;
+  height: 130px;
+  background: radial-gradient(circle at 30% 30%, #b15ff4, #8a08b2 80%);
+  box-shadow: inset -20px -20px 40px rgba(0, 0, 0, 0.6),
+    0 0 30px rgba(209, 118, 209, 0.992);
+}
+
+.mundo5 {
+  position: absolute;
+  top: 70px;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle at 30% 30%, #f5cc6b, #b94a00);
+  box-shadow: inset -20px -20px 40px rgba(0, 0, 0, 0.6),
+    0 0 30px rgba(245, 204, 107, 0.4);
+}
+.mundo5::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 180px;
+  height: 60px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) rotateX(60deg);
+  box-shadow: 0 0 0 20px rgba(255, 255, 255, 0.1),
+    0 0 0 40px rgba(255, 255, 255, 0.05);
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/*------------------------------------------Barra de Progreso---------------------------------------*/
+.progress-bar {
+  position: absolute;
+  top: -25px;
+  width: 80%;
+  height: 17px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, cyan, #00f0ff, #0077ff);
+}
+
+.progress-fill {
+  animation: glow 2s infinite ease-in-out;
+}
+.atomos .progress-fill {
+  background: red;
+  box-shadow: 0 0 10px #ea2214;
+}
+.voltarix .progress-fill {
+  background: green;
+  box-shadow: 0 0 10px #4fe84d;
+}
+.technos .progress-fill {
+  background: #573217;
+  box-shadow: 0 0 10px #573217;
+}
+.magnetron .progress-fill {
+  background: #8a08b2;
+  box-shadow: 0 0 10px #eb3eeb;
+}
+.energy .progress-fill {
+  background: #0077ff;
+  box-shadow: 0 0 10px #00eaff;
+}

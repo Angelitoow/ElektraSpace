@@ -1,0 +1,143 @@
+.background-simulation3 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  background: radial-gradient(
+      circle at 15% 25%,
+      rgba(93, 13, 199, 0.15) 10%,
+      transparent 70%
+    ),
+    radial-gradient(
+      circle at 85% 75%,
+      rgba(136, 32, 240, 0.1) 20%,
+      transparent 70%
+    ),
+    radial-gradient(
+      circle at 45% 85%,
+      rgba(71, 12, 123, 0.1) 20%,
+      transparent 70%
+    ),
+    radial-gradient(
+      circle at 75% 15%,
+      rgba(81, 5, 131, 0.08) 0%,
+      transparent 40%
+    );
+}
+.header-s3 {
+  font-size: 14px;
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 10;
+}
+.tittle-s3 {
+  font-family: Orbitron, monospace;
+  background: linear-gradient(45deg, #df3b61, #11998e, #11998e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 2.5rem;
+  font-weight: 900;
+  margin-bottom: 0px;
+  animation: tittle-glow 3s ease-in-out infinite;
+}
+
+@keyframes tittle-glow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 10px rgba(56, 239, 125, 0.6));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(17, 153, 142, 0.8));
+  }
+}
+.subtittle-s3 {
+  font-family: Orbitron, monospace;
+  font-style: italic;
+  color: #40e0d0;
+  font-size: 0.86rem;
+  font-weight: 400;
+  text-shadow: 0 0 10px rgba(64, 224, 208, 0.5);
+}
+/*----------------------------------------Menu--------------------------------------------*/
+.menu-s3 {
+  position: relative;
+  top: 30px;
+  left: 30px;
+  width: 300px;
+  height: 300px;
+  background-color: black;
+  border-radius: 20px;
+}
+.ring1-s3 {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  top: 25%;
+  left: 40%;
+  border: 4px solid darkmagenta;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ring2-s3 {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  border: 4px solid cyan;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ring3-s3 {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border: 4px solid yellowgreen;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ring4-s3 {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border: 4px solid tomato;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.nucleus-s3 {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background-color: #df3b61;
+  border-radius: 50%;
+  border: 4px solid goldenrod;
+  animation: pulse 4s infinite;
+}
+
+.container-electrons {
+  position: absolute;
+  top: 82%;
+  left: 37%;
+  border: 2px solid;
+  border-radius: 20px;
+  box-shadow: 0 0 20px #40e0d0;
+  width: 400px;
+  height: 70px;
+  display: flex;
+  align-items: start;
+  padding-top:15px;
+  justify-content: center;
+
+}
