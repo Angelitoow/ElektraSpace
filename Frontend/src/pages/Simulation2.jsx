@@ -295,7 +295,7 @@ export function Simulation2() {
             🎯Siguiente Simulación
           </button>
           <button>🚀Ayuda</button>
-          <button>🔄Salir</button>
+          <button onClick={() => navigate("/dashboard")}>🔄Salir</button>
           <p className="hint">
             💡 Presiona “M” para ocultar o mostrar este panel
           </p>
