@@ -16,6 +16,14 @@ const db = mysql.createConnection({
   password: "root",
   database: "elektraspace",
 });
+/*------------------------------------------CORS------------------------------------------*/
+app.use(
+  cors({
+    origin: ["https://elektraspace.vercel.app"], // dominio del frontend en Vercel
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 
 /*------------------------------------------Registro------------------------------------------*/
 app.post("/registrar", (req, res) => {
