@@ -13,54 +13,14 @@ export function Simulation1() {
 
   // 🔹 Estado inicial de átomos (posiciones en px)
   const [atoms, setAtoms] = useState([
-    {
-      id: 1,
-      type: "caotico",
-      x: 0.25 * window.innerWidth,
-      y: 0.72 * window.innerHeight,
-    },
-    {
-      id: 2,
-      type: "caotico",
-      x: 0.35 * window.innerWidth,
-      y: 0.35 * window.innerHeight,
-    },
-    {
-      id: 3,
-      type: "caotico",
-      x: 0.5 * window.innerWidth,
-      y: 0.45 * window.innerHeight,
-    },
-    {
-      id: 4,
-      type: "caotico",
-      x: 0.6 * window.innerWidth,
-      y: 0.15 * window.innerHeight,
-    },
-    {
-      id: 5,
-      type: "caotico",
-      x: 0.65 * window.innerWidth,
-      y: 0.7 * window.innerHeight,
-    },
-    {
-      id: 6,
-      type: "caotico",
-      x: 0.45 * window.innerWidth,
-      y: 0.75 * window.innerHeight,
-    },
-    {
-      id: 7,
-      type: "caotico",
-      x: 0.1 * window.innerWidth,
-      y: 0.05 * window.innerHeight,
-    },
-    {
-      id: 8,
-      type: "caotico",
-      x: 0.75 * window.innerWidth,
-      y: 0.05 * window.innerHeight,
-    },
+    { id: 1, type: "caotico", x: 0.25 * window.innerWidth, y: 0.72 * window.innerHeight },
+    { id: 2, type: "caotico", x: 0.35 * window.innerWidth, y: 0.35 * window.innerHeight },
+    { id: 3, type: "caotico", x: 0.5 * window.innerWidth, y: 0.45 * window.innerHeight },
+    { id: 4, type: "caotico", x: 0.6 * window.innerWidth, y: 0.15 * window.innerHeight },
+    { id: 5, type: "caotico", x: 0.65 * window.innerWidth, y: 0.7 * window.innerHeight },
+    { id: 6, type: "caotico", x: 0.45 * window.innerWidth, y: 0.75 * window.innerHeight },
+    { id: 7, type: "caotico", x: 0.1 * window.innerWidth, y: 0.05 * window.innerHeight },
+    { id: 8, type: "caotico", x: 0.75 * window.innerWidth, y: 0.05 * window.innerHeight },
   ]);
 
   const cannonX = 80; // coordenadas RELATIVAS al contenedor .game-area
@@ -79,6 +39,7 @@ export function Simulation1() {
       )
     );
   };
+
   // --- Loop de animación con requestAnimationFrame ---
   useEffect(() => {
     let raf = 0;
@@ -100,13 +61,10 @@ export function Simulation1() {
 
           atoms.forEach((atom) => {
             if (atom.type === "caotico") {
-              // coordenadas del planet-core
-              const coreX = atom.x + 25; // mitad del ancho
-              const coreY = atom.y + 25; // mitad del alto
-
+              const coreX = atom.x + 25;
+              const coreY = atom.y + 25;
               const dist = Math.hypot(x - coreX, y - coreY);
               if (dist < 60) {
-                // radio real del planet-core
                 collided = true;
                 stabilizeAtom(atom.id);
                 setExplosions((exp) => [...exp, { id: Date.now(), x, y }]);
@@ -114,12 +72,7 @@ export function Simulation1() {
             }
           });
 
-          if (
-            !collided &&
-            y < window.innerHeight - 50 &&
-            x > -200 &&
-            x < window.innerWidth - 50
-          ) {
+          if (!collided && y < window.innerHeight - 50 && x > -200 && x < window.innerWidth - 50) {
             updated.push({ ...p, x, y, vy });
           }
         });
@@ -132,7 +85,7 @@ export function Simulation1() {
 
     raf = requestAnimationFrame(step);
     return () => cancelAnimationFrame(raf);
-  }, [atoms]); // depende de atoms para actualizar cuando cambian
+  }, [atoms]);
 
   // recarga visual simple
   useEffect(() => {
@@ -208,10 +161,28 @@ export function Simulation1() {
   };
 
   // --- CONTADORES (para el menú) ---
-  const estabilizadosCount = atoms.filter(
-    (a) => a.type === "stabilized"
-  ).length;
+  const estabilizadosCount = atoms.filter((a) => a.type === "stabilized").length;
   const restantesCount = atoms.filter((a) => a.type === "caotico").length;
+
+  // --- NUEVO: TIMERS DE EXPLICACIONES ---
+  const [currentTip, setCurrentTip] = useState("");
+  useEffect(() => {
+    const timers = [
+      { delay: 1000, text: "Bienvenido a la Simulación 1: Cañón Atómico. Aprende a estabilizar átomos caóticos." },
+      { delay: 5000, text: "Cada átomo tiene electrones desordenados que debes alinear usando el cañón." },
+      { delay: 10000, text: "Haz clic en la pantalla para disparar proyectiles y observar la trayectoria." },
+      { delay: 15000, text: "Los proyectiles colisionan con los núcleos atómicos, transformando átomos caóticos en estabilizados." },
+      { delay: 20000, text: "Observa cómo los átomos estabilizados muestran órbitas ordenadas." },
+      { delay: 25000, text: "Usa la barra de recarga y apunta con el puntero para mejorar tu precisión." },
+      { delay: 30000, text: "Tu objetivo es estabilizar todos los átomos restantes y aprender sobre la física de proyectiles." }
+    ];
+
+    const timeoutIds = timers.map((tip) =>
+      setTimeout(() => setCurrentTip(tip.text), tip.delay)
+    );
+
+    return () => timeoutIds.forEach((id) => clearTimeout(id));
+  }, []);
 
   return (
     <div className="background-simulation1" onClick={handleClick}>
@@ -330,6 +301,25 @@ export function Simulation1() {
           <button>🚀Ayuda</button>
           <button>🔄Salir</button>
         </div>
+      </div>
+
+      {/* --- NUEVO: TIP DE EXPLICACIÓN --- */}
+      <div
+        className="simulation-tip"
+        style={{
+          position: "fixed",
+          top: "10px",
+          right: "10px",
+          background: "rgba(0,0,0,0.7)",
+          color: "white",
+          padding: "10px 15px",
+          borderRadius: "8px",
+          maxWidth: "300px",
+          fontSize: "14px",
+          zIndex: 9999,
+        }}
+      >
+        {currentTip}
       </div>
     </div>
   );
