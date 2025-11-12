@@ -9,9 +9,9 @@ export function Simulation1() {
   const [reload, setReload] = useState(1);
   const [lastShot, setLastShot] = useState(0);
   const [explosions, setExplosions] = useState([]);
+  const [message, setMessage] = useState(""); // <-- NUEVO ESTADO PARA MENSAJES
   const navigate = useNavigate();
 
-  // 🔹 Estado inicial de átomos (posiciones en px)
   const [atoms, setAtoms] = useState([
     { id: 1, type: "caotico", x: 0.25 * window.innerWidth, y: 0.72 * window.innerHeight },
     { id: 2, type: "caotico", x: 0.35 * window.innerWidth, y: 0.35 * window.innerHeight },
@@ -23,13 +23,13 @@ export function Simulation1() {
     { id: 8, type: "caotico", x: 0.75 * window.innerWidth, y: 0.05 * window.innerHeight },
   ]);
 
-  const cannonX = 80; // coordenadas RELATIVAS al contenedor .game-area
+  const cannonX = 80;
   const cannonY = 450;
-  const mouthOffset = 120; // distancia desde la base hasta la boca (px)
+  const mouthOffset = 120;
 
-  const MAX_POWER_DIST = 300; // distancia máxima considerada para potencia
-  const MAX_SPEED = 1000; // px/s (velocidad máxima)
-  const GRAVITY = 800; // px/s^2 (gravedad)
+  const MAX_POWER_DIST = 300;
+  const MAX_SPEED = 1000;
+  const GRAVITY = 800;
   const COOLDOWN_MS = 800;
 
   const stabilizeAtom = (id) => {
@@ -40,7 +40,7 @@ export function Simulation1() {
     );
   };
 
-  // --- Loop de animación con requestAnimationFrame ---
+  // --- Loop de animación ---
   useEffect(() => {
     let raf = 0;
     let last = performance.now();
@@ -160,28 +160,47 @@ export function Simulation1() {
     setLastShot(now);
   };
 
-  // --- CONTADORES (para el menú) ---
   const estabilizadosCount = atoms.filter((a) => a.type === "stabilized").length;
   const restantesCount = atoms.filter((a) => a.type === "caotico").length;
 
-  // --- NUEVO: TIMERS DE EXPLICACIONES ---
-  const [currentTip, setCurrentTip] = useState("");
+  /*------------------------------------ NUEVO: MENSAJES EDUCATIVOS AL ESTILO Simulation2 ------------------------------------*/
   useEffect(() => {
-    const timers = [
-      { delay: 1000, text: "Bienvenido a la Simulación 1: Cañón Atómico. Aprende a estabilizar átomos caóticos." },
-      { delay: 5000, text: "Cada átomo tiene electrones desordenados que debes alinear usando el cañón." },
-      { delay: 10000, text: "Haz clic en la pantalla para disparar proyectiles y observar la trayectoria." },
-      { delay: 15000, text: "Los proyectiles colisionan con los núcleos atómicos, transformando átomos caóticos en estabilizados." },
-      { delay: 20000, text: "Observa cómo los átomos estabilizados muestran órbitas ordenadas." },
-      { delay: 25000, text: "Usa la barra de recarga y apunta con el puntero para mejorar tu precisión." },
-      { delay: 30000, text: "Tu objetivo es estabilizar todos los átomos restantes y aprender sobre la física de proyectiles." }
-    ];
+    const timers = [];
+    setMessage("");
 
-    const timeoutIds = timers.map((tip) =>
-      setTimeout(() => setCurrentTip(tip.text), tip.delay)
+    // Mensaje 1
+    timers.push(
+      setTimeout(() => {
+        setMessage("🎮 CONTROLES: Haz clic para disparar el cañón y estabilizar átomos.");
+        setTimeout(() => setMessage(""), 2500);
+      }, 1000)
     );
 
-    return () => timeoutIds.forEach((id) => clearTimeout(id));
+    // Mensaje 2
+    timers.push(
+      setTimeout(() => {
+        setMessage("⚡ OBJETIVO: Convierte todos los átomos caóticos en estabilizados.");
+        setTimeout(() => setMessage(""), 2500);
+      }, 4500)
+    );
+
+    // Mensaje 3
+    timers.push(
+      setTimeout(() => {
+        setMessage("🎯 CONSEJO: Observa la trayectoria antes de disparar para apuntar mejor.");
+        setTimeout(() => setMessage(""), 2500);
+      }, 8000)
+    );
+
+    // Mensaje 4
+    timers.push(
+      setTimeout(() => {
+        setMessage("💡 Tip: Los átomos estabilizados muestran órbitas ordenadas y electrones alineados.");
+        setTimeout(() => setMessage(""), 2500);
+      }, 11500)
+    );
+
+    return () => timers.forEach(clearTimeout);
   }, []);
 
   return (
@@ -303,24 +322,26 @@ export function Simulation1() {
         </div>
       </div>
 
-      {/* --- NUEVO: TIP DE EXPLICACIÓN --- */}
-      <div
-        className="simulation-tip"
-        style={{
-          position: "fixed",
-          top: "10px",
-          right: "10px",
-          background: "rgba(0,0,0,0.7)",
-          color: "white",
-          padding: "10px 15px",
-          borderRadius: "8px",
-          maxWidth: "300px",
-          fontSize: "14px",
-          zIndex: 9999,
-        }}
-      >
-        {currentTip}
-      </div>
+      {/* MENSAJE EDUCACIONAL */}
+      {message && (
+        <div
+          className="message"
+          style={{
+            position: "fixed",
+            top: "20px",
+            left: "50%",
+            transform: "translateX(-50%)",
+            background: "rgba(0,0,0,0.75)",
+            color: "white",
+            padding: "10px 20px",
+            borderRadius: "8px",
+            fontSize: "14px",
+            zIndex: 9999,
+          }}
+        >
+          {message}
+        </div>
+      )}
     </div>
   );
 }
