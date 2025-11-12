@@ -1,1 +1,1 @@
-export const API_URL = "https://elektraspace.onrender.com";
+export const API_URL = "https://elektra-backend-production.up.railway.app/";
