@@ -11,10 +11,11 @@ dotenv.config();
 app.use(express.json());
 
 const db = mysql.createConnection({
-  host: "maglev.proxy.rlwy.net",
-  user: "root",
-  password: "LfaEDUrLmtSQIOcbFqoiLqGYeSrSMycd",
-  database: "railway"
+  host: process.env.MYSQLHOST,
+  port: process.env.MYSQLPORT,
+  user: process.env.MYSQLUSER,
+  password: process.env.MYSQLPASSWORD,
+  database: process.env.MYSQLDATABASE,
 });
 
 /*------------------------------------------CORS------------------------------------------*/
