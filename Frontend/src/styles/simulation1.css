@@ -335,8 +335,9 @@
   font-size: 14px;
   font-weight: bold;
   position: absolute;
-  top: 150px;
+  top: 220px;
   right: 3%;
+  height: 350px;
   width: 220px;
   padding: 20px;
   bottom: 2%;
@@ -463,4 +464,9 @@
     transform: scale(1);
     opacity: 0;
   }
+}
+/*------------------------------------------Mensajes---------------------------------------------- */
+.message.S1{
+  color: #d4a7a3;
+  border-color: #ff4757;
 }

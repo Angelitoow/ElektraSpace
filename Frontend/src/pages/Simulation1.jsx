@@ -9,18 +9,85 @@ export function Simulation1() {
   const [reload, setReload] = useState(1);
   const [lastShot, setLastShot] = useState(0);
   const [explosions, setExplosions] = useState([]);
-  const [message, setMessage] = useState(""); // <-- NUEVO ESTADO PARA MENSAJES
+  const [message, setMessage] = useState("");
+  const [scanning, setScanning] = useState(false);
   const navigate = useNavigate();
 
+  const scanAtoms = () => {
+    if (scanning) return; // evita múltiples clics
+    setScanning(true);
+
+    const durationPerAtom = 500; // ms que dura la escala de cada átomo
+
+    atoms.forEach((atom, index) => {
+      setTimeout(() => {
+        // agrandar el átomo actual
+        setAtoms((prev) =>
+          prev.map((a) => (a.id === atom.id ? { ...a, scanning: true } : a))
+        );
+
+        // volver al tamaño normal después de durationPerAtom
+        setTimeout(() => {
+          setAtoms((prev) =>
+            prev.map((a) => (a.id === atom.id ? { ...a, scanning: false } : a))
+          );
+        }, durationPerAtom);
+      }, index * durationPerAtom); // secuencia en orden
+    });
+
+    // termina el escaneo después de recorrer todos
+    setTimeout(() => setScanning(false), atoms.length * durationPerAtom);
+  };
+
   const [atoms, setAtoms] = useState([
-    { id: 1, type: "caotico", x: 0.25 * window.innerWidth, y: 0.72 * window.innerHeight },
-    { id: 2, type: "caotico", x: 0.35 * window.innerWidth, y: 0.35 * window.innerHeight },
-    { id: 3, type: "caotico", x: 0.5 * window.innerWidth, y: 0.45 * window.innerHeight },
-    { id: 4, type: "caotico", x: 0.6 * window.innerWidth, y: 0.15 * window.innerHeight },
-    { id: 5, type: "caotico", x: 0.65 * window.innerWidth, y: 0.7 * window.innerHeight },
-    { id: 6, type: "caotico", x: 0.45 * window.innerWidth, y: 0.75 * window.innerHeight },
-    { id: 7, type: "caotico", x: 0.1 * window.innerWidth, y: 0.05 * window.innerHeight },
-    { id: 8, type: "caotico", x: 0.75 * window.innerWidth, y: 0.05 * window.innerHeight },
+    {
+      id: 1,
+      type: "caotico",
+      x: 0.25 * window.innerWidth,
+      y: 0.72 * window.innerHeight,
+    },
+    {
+      id: 2,
+      type: "caotico",
+      x: 0.35 * window.innerWidth,
+      y: 0.35 * window.innerHeight,
+    },
+    {
+      id: 3,
+      type: "caotico",
+      x: 0.5 * window.innerWidth,
+      y: 0.45 * window.innerHeight,
+    },
+    {
+      id: 4,
+      type: "caotico",
+      x: 0.6 * window.innerWidth,
+      y: 0.15 * window.innerHeight,
+    },
+    {
+      id: 5,
+      type: "caotico",
+      x: 0.65 * window.innerWidth,
+      y: 0.7 * window.innerHeight,
+    },
+    {
+      id: 6,
+      type: "caotico",
+      x: 0.45 * window.innerWidth,
+      y: 0.75 * window.innerHeight,
+    },
+    {
+      id: 7,
+      type: "caotico",
+      x: 0.1 * window.innerWidth,
+      y: 0.05 * window.innerHeight,
+    },
+    {
+      id: 8,
+      type: "caotico",
+      x: 0.75 * window.innerWidth,
+      y: 0.05 * window.innerHeight,
+    },
   ]);
 
   const cannonX = 80;
@@ -72,7 +139,12 @@ export function Simulation1() {
             }
           });
 
-          if (!collided && y < window.innerHeight - 50 && x > -200 && x < window.innerWidth - 50) {
+          if (
+            !collided &&
+            y < window.innerHeight - 50 &&
+            x > -200 &&
+            x < window.innerWidth - 50
+          ) {
             updated.push({ ...p, x, y, vy });
           }
         });
@@ -160,7 +232,9 @@ export function Simulation1() {
     setLastShot(now);
   };
 
-  const estabilizadosCount = atoms.filter((a) => a.type === "stabilized").length;
+  const estabilizadosCount = atoms.filter(
+    (a) => a.type === "stabilized"
+  ).length;
   const restantesCount = atoms.filter((a) => a.type === "caotico").length;
 
   /*------------------------------------ NUEVO: MENSAJES EDUCATIVOS AL ESTILO Simulation2 ------------------------------------*/
@@ -171,37 +245,80 @@ export function Simulation1() {
     // Mensaje 1
     timers.push(
       setTimeout(() => {
-        setMessage("🎮 CONTROLES: Haz clic para disparar el cañón y estabilizar átomos.");
-        setTimeout(() => setMessage(""), 2500);
+        setMessage(
+          "🎮 Controles: Haz clic en el cañón para disparar y estabilizar átomos caóticos. Observa la trayectoria antes de disparar para apuntar correctamente."
+        );
+        setTimeout(() => setMessage(""), 6500);
       }, 1000)
     );
 
     // Mensaje 2
     timers.push(
       setTimeout(() => {
-        setMessage("⚡ OBJETIVO: Convierte todos los átomos caóticos en estabilizados.");
-        setTimeout(() => setMessage(""), 2500);
-      }, 4500)
+        setMessage(
+          "⚛️ Concepto: Los átomos están formados por un núcleo y electrones en órbitas. En esta simulación, los átomos caóticos representan electrones desordenados y núcleos inestables."
+        );
+        setTimeout(() => setMessage(""), 6500);
+      }, 8500)
     );
 
     // Mensaje 3
     timers.push(
       setTimeout(() => {
-        setMessage("🎯 CONSEJO: Observa la trayectoria antes de disparar para apuntar mejor.");
-        setTimeout(() => setMessage(""), 2500);
-      }, 8000)
+        setMessage(
+          " 🎯 Objetivo: Tu meta es estabilizar todos los átomos. Un átomo estabilizado tiene electrones alineados y órbitas regulares, lo que representa un estado de energía más bajo y ordenado."
+        );
+        setTimeout(() => setMessage(""), 6500);
+      }, 16000)
     );
 
     // Mensaje 4
     timers.push(
       setTimeout(() => {
-        setMessage("💡 Tip: Los átomos estabilizados muestran órbitas ordenadas y electrones alineados.");
-        setTimeout(() => setMessage(""), 2500);
-      }, 11500)
+        setMessage(
+          "💡 Tip de Física: Al disparar el cañón, estás aplicando energía para reorganizar los electrones. Cuanto más preciso seas, más eficiente será la estabilización."
+        );
+        setTimeout(() => setMessage(""), 6500);
+      }, 23500)
+    );
+
+    // Mensaje 5
+    timers.push(
+      setTimeout(() => {
+        setMessage(
+          "🔬 Observación: Cada átomo estabilizado muestra patrones de órbitas predecibles. Esto refleja cómo la energía y las fuerzas internas afectan la estructura atómica."
+        );
+        setTimeout(() => setMessage(""), 6500);
+      }, 31000)
+    );
+
+    // Mensaje 6
+    timers.push(
+      setTimeout(() => {
+        setMessage(
+          "🌌 Resumen: Esta simulación combina conceptos de física atómica y energía: aprender a equilibrar fuerzas y alcanzar estados estables de los átomos es clave para entender la estructura de la materia."
+        );
+        setTimeout(() => setMessage(""), 6500);
+      }, 38500)
     );
 
     return () => timers.forEach(clearTimeout);
   }, []);
+
+  // ------------------------------------ AVANCE AUTOMÁTICO CUANDO TODOS LOS ÁTOMOS ESTÁN ESTABILIZADOS ------------------------------------
+  useEffect(() => {
+    if (atoms.length === 0) return;
+    const allStabilized = atoms.every((a) => a.type === "stabilized");
+    if (allStabilized) {
+      setMessage(
+        "✅ ¡Todos los átomos han sido estabilizados! Avanzando a la siguiente simulación..."
+      );
+      const timer = setTimeout(() => {
+        navigate("/simulation2");
+      }, 3500); // espera 3.5 segundos antes de avanzar
+      return () => clearTimeout(timer);
+    }
+  }, [atoms, navigate]);
 
   return (
     <div className="background-simulation1" onClick={handleClick}>
@@ -270,7 +387,12 @@ export function Simulation1() {
         <div
           key={atom.id}
           className={`atom ${atom.type}`}
-          style={{ top: atom.y + "px", left: atom.x + "px" }}
+          style={{
+            top: atom.y + "px",
+            left: atom.x + "px",
+            transform: atom.scanning ? "scale(1.2)" : "scale(1)",
+            transition: "transform 0.3s ease-in-out",
+          }}
         >
           <div className="planet-core">
             <div className="planet-surface"></div>
@@ -313,35 +435,14 @@ export function Simulation1() {
         </div>
         <div className="count-caos">Restantes en Caos: {restantesCount}</div>
         <div className="menu-buttons">
-          <button>🔬Escanear Átomos</button>
-          <button onClick={() => navigate("/simulation2")} className="next">
-            🎯Siguiente Simulación
-          </button>
+          <button onClick={scanAtoms}>🔬Escanear Átomos</button>
           <button>🚀Ayuda</button>
-          <button>🔄Salir</button>
+          <button onClick={() => navigate("/dashboard")}>🔄Salir</button>
         </div>
       </div>
 
       {/* MENSAJE EDUCACIONAL */}
-      {message && (
-        <div
-          className="message"
-          style={{
-            position: "fixed",
-            top: "20px",
-            left: "50%",
-            transform: "translateX(-50%)",
-            background: "rgba(0,0,0,0.75)",
-            color: "white",
-            padding: "10px 20px",
-            borderRadius: "8px",
-            fontSize: "14px",
-            zIndex: 9999,
-          }}
-        >
-          {message}
-        </div>
-      )}
+      {message && <div className="message S1">{message}</div>}
     </div>
   );
 }
