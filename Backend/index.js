@@ -288,6 +288,7 @@ app.get("/historial/:idModulo", autenticar, (req, res) => {
   });
 });
 /*------------------------------------------Ruta Raíz------------------------------------------*/
+// Ruta raíz para comprobar que el servidor funciona
 app.get("/", (req, res) => {
   res.send("🚀 Backend de ElektraSpace funcionando correctamente");
 });
