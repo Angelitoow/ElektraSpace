@@ -25,6 +25,14 @@ app.use(
     credentials: true,
   })
 );
+/*------------------------------------------Conexión DB------------------------------------------*/
+db.connect((err) => {
+  if (err) {
+    console.error("❌ Error al conectar con la base de datos:", err);
+  } else {
+    console.log("✅ Conexión exitosa con la base de datos Railway");
+  }
+});
 
 /*------------------------------------------Registro------------------------------------------*/
 app.post("/registrar", (req, res) => {
