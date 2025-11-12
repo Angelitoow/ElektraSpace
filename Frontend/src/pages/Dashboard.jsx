@@ -197,7 +197,7 @@ export function Dashboard() {
         <span className="username"> {primerNombre}</span>
       </div>
       <img
-        src="/public/nave.png"
+        src="/nave.png"
         alt="nave"
         className="nave"
         onClick={() => setShowMission(true)}
