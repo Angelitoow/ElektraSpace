@@ -129,6 +129,25 @@ export function Dashboard() {
   }, []);
   // se ejecuta solo al montar el componente
 
+  // 🔐 Control secuencial de desbloqueo
+  const getStatusSecuencial = (index) => {
+    // Si es el primer módulo, siempre está desbloqueado
+    if (index === 0) return "unlocked";
+
+    // Si el anterior está completado, desbloquear este
+    const moduloAnterior = modulos[index - 1];
+    if (
+      moduloAnterior &&
+      (moduloAnterior.estadoModulo === "Completado" ||
+        moduloAnterior.status === "completed")
+    ) {
+      return "unlocked";
+    }
+
+    // En caso contrario, mantenerlo bloqueado
+    return "locked";
+  };
+
   return (
     <div className="background-dashboard">
       {showMission && <Intro onClose={() => setShowMission(false)} />}
@@ -145,7 +164,12 @@ export function Dashboard() {
       )}
       {showTheme && <Theme onClose={() => setShowTheme(false)} />}
       {showQuiz && <Quiz onClose={() => setShowQuiz(false)} />}
-      {showPlanetData && <PlanetData onClose={() => setShowPlanetData(false)} modulo={selectedModulo} />}
+      {showPlanetData && (
+        <PlanetData
+          onClose={() => setShowPlanetData(false)}
+          modulo={selectedModulo}
+        />
+      )}
       <div className="spaceship" style={{ top: "5%", left: "100%" }}>
         🚀
       </div>
@@ -205,48 +229,55 @@ export function Dashboard() {
       <div className="system-solar ring0">
         <div className="sun">⭐</div>
       </div>
-      {modulos.map((modulo, index) => (
-        <div key={modulo.idModulo} className={`system-solar ring${index + 1}`}>
-          <Planet
-            name={modulo.nombreModulo}
-            progress={modulo.progreso || 0} // si tiene progreso
-            status={
-              modulo.estadoModulo === "Disponible"
-                ? "unlocked"
-                : modulo.estadoModulo === "Sellado"
-                ? "locked"
-                : "completed"
-            }
-            type={`mundo${modulo.ordenSecuencia}`}
-            ultimoIngreso={modulo.ultimoIngreso}
-            onClick={async () => {
-              setSelectedModulo(modulo);
-              setShowPlanetData(true);
+      {modulos.map((modulo, index) => {
+        // Determinar estado secuencial
+        const status = getStatusSecuencial(index);
 
-              try {
-                // 1️⃣ Ver si ya hay un historial activo
-                const ultimo = await obtenerUltimoHistorial(modulo.idModulo);
-
-                if (!ultimo || ultimo.fechaSalidaModulo) {
-                  // 2️⃣ No hay historial abierto → registrar nuevo ingreso
-                  const nuevo = await registrarIngresoModulo(modulo.idModulo);
-                  setHistorialActivo(nuevo.idHistorial);
-                  console.log("🟢 Ingreso registrado:", nuevo.idHistorial);
-                } else {
-                  // 3️⃣ Ya hay un historial activo → usar el existente
-                  setHistorialActivo(ultimo.idHistorial);
-                  console.log(
-                    "⚠️ Ya hay historial activo:",
-                    ultimo.idHistorial
+        return (
+          <div
+            key={modulo.idModulo}
+            className={`system-solar ring${index + 1}`}
+          >
+            <Planet
+              name={modulo.nombreModulo}
+              progress={modulo.progreso || 0}
+              status={status}
+              type={`mundo${modulo.ordenSecuencia}`}
+              ultimoIngreso={modulo.ultimoIngreso}
+              onClick={async () => {
+                if (status === "locked") {
+                  alert(
+                    "🚫 Este planeta está sellado. Completa el anterior para desbloquearlo."
                   );
+                  return;
                 }
-              } catch (error) {
-                console.error("Error registrando ingreso:", error);
-              }
-            }}
-          />
-        </div>
-      ))}
+
+                setSelectedModulo(modulo);
+                setShowPlanetData(true);
+
+                try {
+                  // Registrar ingreso solo si no está bloqueado
+                  const ultimo = await obtenerUltimoHistorial(modulo.idModulo);
+                  if (!ultimo || ultimo.fechaSalidaModulo) {
+                    const nuevo = await registrarIngresoModulo(modulo.idModulo);
+                    setHistorialActivo(nuevo.idHistorial);
+                    console.log("🟢 Ingreso registrado:", nuevo.idHistorial);
+                  } else {
+                    setHistorialActivo(ultimo.idHistorial);
+                    console.log(
+                      "⚠️ Ya hay historial activo:",
+                      ultimo.idHistorial
+                    );
+                  }
+                } catch (error) {
+                  console.error("Error registrando ingreso:", error);
+                }
+              }}
+            />
+          </div>
+        );
+      })}
+
       <div className="guide-panel">
         <h4>🎮 Guía del Explorador</h4>
         <ul>
